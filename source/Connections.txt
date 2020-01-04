@@ -1,0 +1,24 @@
+#
+# SQLConnections.txt
+#
+# A list of OleDB connection string aliases for New-OledbConnection, add or change as needed.
+#
+# To query the user for connection information wrap the query in
+# percentage signs. i.e. %variable to be replaced%
+#
+# Microsoft OleDB connection string documentation:  https://docs.microsoft.com/en-us/sql/ado/guide/appendixes/appendix-a-providers?view=sql-server-ver15
+#
+# _____Format_____
+#   # Comment
+#   alias        OleDB Connection String
+
+# The SQL Oledb provider is available by default with .Net
+MSSQL            Provider=sqloledb; Data Source=%Server_Name%; Initial Catalog=%Database_Name%;Integrated Security=SSPI;
+
+# Oracle's Oledb provider must be downloaded from Oracle and installed.
+ORACLE           Provider=OraOLEDB.Oracle;OLEDB.NET=true;Data Source=%Database_Name%;User Id=%Username%;Password=%Password%;
+
+# When querying CSV files, the connection string points to the path of any number of CSV files that are treated
+# as separate tables in the SQL query. Substitute any periods in a file name with a pound sign (#).
+#  select * from table1#csv
+CSV              Provider=Microsoft.ACE.OLEDB.12.0;Data Source=%Folder_Path%;Extended Properties="Text;HDR=Yes;FMT=Delimited;
